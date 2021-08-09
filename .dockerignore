@@ -1,0 +1,15 @@
+/.editorconfig
+/.env
+/.env.example
+/.gitattributes
+/.gitignore
+/phpunit.xml.dist
+/phpstan.neon
+/*.md
+/.ddev
+/.github
+/private
+/web/sites/default/files
+/web/sites/simpletest
+/web/sites/default/settings.local.php
+/vendor

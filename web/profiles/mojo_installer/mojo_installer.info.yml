@@ -1,0 +1,18 @@
+name: Mojo
+type: profile
+core_version_requirement: ^9
+description: 'An opinionated Drupal build designed to run in a cloud native environment.'
+dependencies:
+  - block
+  - system
+  - user
+themes:
+  - olivero
+  - gin
+config_install: true
+config_install_path: ../config
+distribution:
+  name: Mojo
+  install:
+    finish_url: /admin
+    theme: olivero

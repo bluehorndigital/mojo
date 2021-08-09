@@ -1,0 +1,149 @@
+{
+    "name": "bluehorndigital/mojo",
+    "description": "An opinionated Drupal build designed to run in a cloud native environment.",
+    "type": "project",
+    "license": "GPL-2.0-or-later",
+    "homepage": "https://github.com/bluehorndigital/mojo",
+    "support": {
+        "docs": "https://github.com/bluehorndigital/mojo/wiki"
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://packages.drupal.org/8"
+        }
+    ],
+    "require": {
+        "php": "^7.4|^8.0",
+        "ext-json": "*",
+        "composer/installers": "^1.9",
+        "cweagans/composer-patches": "^1.7.1",
+        "drupal/admin_toolbar": "^3.0",
+        "drupal/advancedqueue": "^1.0@RC",
+        "drupal/core-composer-scaffold": "^9.2",
+        "drupal/core-project-message": "^9.2",
+        "drupal/core-recommended": "^9.2",
+        "drupal/flysystem": "^2",
+        "drupal/flysystem_s3": "^2.0@RC",
+        "drupal/gin": "^3.0@alpha",
+        "drupal/gin_login": "^1.0@RC",
+        "drupal/metatag": "^1.16",
+        "drupal/pathauto": "^1.8",
+        "drupal/redis": "^1.5",
+        "drupal/swiftmailer": "^2.0",
+        "drupal/token": "^1.9",
+        "drush/drush": "^10.5",
+        "vlucas/phpdotenv": "^5.3"
+    },
+    "require-dev": {
+        "drupal/core-dev": "^9.2",
+        "mglaman/phpstan-drupal": "^0.12.12",
+        "phpspec/prophecy-phpunit": "^2",
+        "phpstan/extension-installer": "^1.1",
+        "phpstan/phpstan": "^0.12.94",
+        "phpstan/phpstan-deprecation-rules": "^0.12.6"
+    },
+    "autoload": {
+        "files": [
+            "load.environment.php"
+        ]
+    },
+    "conflict": {
+        "drupal/drupal": "*",
+        "drupal/profile": "< 1.2"
+    },
+    "scripts": {
+        "post-root-package-install": [
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        ],
+        "post-create-project-cmd": [
+            "@php mojo env:generate --ansi"
+        ]
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "config": {
+        "sort-packages": true,
+        "apcu-autoloader": true,
+        "optimize-autoloader": true,
+        "preferred-install": "dist"
+    },
+    "extra": {
+        "composer-exit-on-patch-failure": true,
+        "enable-patching": true,
+        "patchLevel": {
+            "drupal/core": "-p2"
+        },
+        "patches": {
+            "drupal/flysystem_s3": {
+                "uriScheme() method missing after update to Drupal 9": "https://www.drupal.org/files/issues/2020-12-07/replace-urischeme-method-3159928-4.patch"
+            },
+            "twistor/stream-util": {
+                "External: Handle fstat returning a boolean instead of an array (https://github.com/twistor/stream-util/pull/3, https://www.drupal.org/project/flysystem/issues/2661588)": "https://patch-diff.githubusercontent.com/raw/twistor/stream-util/pull/3.diff"
+            }
+        },
+        "violinist": {
+            "one_pull_request_per_package": 1,
+            "run_scripts": 0,
+            "bundled_packages": {
+                "drupal/core-recommended": [
+                    "drupal/core-composer-scaffold",
+                    "drupal/core-project-message"
+                ]
+            },
+            "blacklist": [
+                "drupal/core-composer-scaffold",
+                "drupal/core-project-message"
+            ]
+        },
+        "drupal-scaffold": {
+            "locations": {
+                "web-root": "web/"
+            },
+            "file-mapping": {
+                "[project-root]/.editorconfig": false,
+                "[web-root]/example.gitignore": false,
+                "[web-root]/INSTALL.txt": false,
+                "[web-root]/README.md": false,
+                "[web-root]/sites/development.services.yml": false,
+                "[web-root]/sites/default/settings.php": false
+            }
+        },
+        "installer-paths": {
+            "web/core": [
+                "type:drupal-core"
+            ],
+            "web/libraries/{$name}": [
+                "type:drupal-library"
+            ],
+            "web/modules/contrib/{$name}": [
+                "type:drupal-module"
+            ],
+            "web/profiles/contrib/{$name}": [
+                "type:drupal-profile"
+            ],
+            "web/themes/contrib/{$name}": [
+                "type:drupal-theme"
+            ],
+            "drush/Commands/contrib/{$name}": [
+                "type:drupal-drush"
+            ],
+            "web/modules/custom/{$name}": [
+                "type:drupal-custom-module"
+            ],
+            "web/profiles/custom/{$name}": [
+                "type:drupal-custom-profile"
+            ],
+            "web/themes/custom/{$name}": [
+                "type:drupal-custom-theme"
+            ]
+        },
+        "drupal-core-project-message": {
+            "post-create-project-cmd-message": [
+                "<bg=blue;fg=white>                                                         </>",
+                "<bg=blue;fg=white>  Welcome to Mojo!  </>",
+                "<bg=blue;fg=white>                                                         </>"
+            ]
+        }
+    }
+}

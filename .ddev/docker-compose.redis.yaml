@@ -1,0 +1,20 @@
+version: '3.6'
+services:
+  redis:
+    container_name: ddev-${DDEV_SITENAME}-redis
+    image: redis:5.0
+    ports: ['6379']
+    labels:
+      # These labels ensure this service is discoverable by ddev
+      com.ddev.site-name: ${DDEV_SITENAME}
+      com.ddev.approot: $DDEV_APPROOT
+    volumes:
+      - redis:/data
+  web:
+    environment:
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+    links:
+      - redis:$DDEV_HOSTNAME
+volumes:
+  redis:

@@ -1,0 +1,69 @@
+version: '3.6'
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "127.0.0.1:8080:80/tcp"
+    volumes:
+      - .:/var/www/html
+    environment:
+      - DB_CONNECTION=mysql
+      - DRUPAL_DATABASE_HOST=db
+      - DRUPAL_DATABASE_NAME=db
+      - DRUPAL_DATABASE_PASSWORD=db
+      - DRUPAL_DATABASE_PORT='3306'
+      - DRUPAL_DATABASE_USERNAME=db
+      - SMTP_SERVER=mailhog
+      - FILESYSTEM_DRIVER=s3
+      - AWS_ACCESS_KEY_ID=minioadmin
+      - AWS_SECRET_ACCESS_KEY=minioadmin
+      - AWS_DEFAULT_REGION=us-east-1
+      - S3_BUCKET=mojodata
+      - S3_PROTOCOL=http
+      - S3_CNAME=127.0.0.1:9090
+      - S3_ENDPOINT=http://storage:9000
+      - S3_USE_PATH_STYLE_ENDPOINT=true
+      - S3_CNAME_IS_BUCKET=false
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+  db:
+    image: mysql:8
+    environment:
+      - MYSQL_ROOT_PASSWORD=db
+      - MYSQL_DATABASE=db
+      - MYSQL_USER=db
+      - MYSQL_PASSWORD=db
+    volumes:
+      - db-data:/var/lib/mysql
+  storage:
+    image: minio/minio
+    entrypoint: sh
+    command: '-c ''mkdir -p /data/mojodata && /usr/bin/minio server /data --console-address ":9001"'''
+    volumes:
+      - object-data:/data
+    environment:
+      - LOG_LEVEL=trace
+      - MINIO_ROOT_USER=minioadmin
+      - MINIO_ROOT_PASSWORD=minioadmin
+      - MINIO_DOMAIN=storage
+    ports:
+      - "127.0.0.1:9090:9000/tcp"
+      - "127.0.0.1:9091:9001/tcp"
+    networks:
+      default:
+        aliases:
+          - mojodata.storage
+  mailhog:
+    image: mailhog/mailhog
+    ports:
+    - "127.0.0.1:8025:8025/tcp"
+  redis:
+    image: redis:5.0
+    volumes:
+      - redis-data:/data
+volumes:
+  db-data: {}
+  object-data: {}
+  redis-data: {}
