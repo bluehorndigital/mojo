@@ -144,6 +144,9 @@ if (isset($_SERVER['HTTP_X_FORWARDED_FOR'], $_SERVER['REMOTE_ADDR'])) {
 }
 
 if ($_ENV['FILESYSTEM_DRIVER'] === 's3') {
+  // We cannot support a private file path if using object storage.
+  unset($settings['file_private_path']);
+
   $schemes = [
     's3' => [
       'driver' => 's3',
