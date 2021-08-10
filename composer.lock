@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ed7d2b12efd30301dec0ef7bb34d3637",
+    "content-hash": "375c9d205b42081f2a59e38f81b6f977",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -64,16 +64,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.188.0",
+            "version": "3.188.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "613cea76913b632d75ed2f6ed5afb11c53762a6e"
+                "reference": "7c84f39290067c6e86b3bc4518f211be0f499dc8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/613cea76913b632d75ed2f6ed5afb11c53762a6e",
-                "reference": "613cea76913b632d75ed2f6ed5afb11c53762a6e",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/7c84f39290067c6e86b3bc4518f211be0f499dc8",
+                "reference": "7c84f39290067c6e86b3bc4518f211be0f499dc8",
                 "shasum": ""
             },
             "require": {
@@ -148,9 +148,9 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.188.0"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.188.1"
             },
-            "time": "2021-08-06T18:17:12+00:00"
+            "time": "2021-08-09T18:29:02+00:00"
         },
         {
             "name": "chi-teck/drupal-code-generator",
@@ -2105,17 +2105,17 @@
         },
         {
             "name": "drupal/flysystem",
-            "version": "2.0.0-alpha1",
+            "version": "2.0.0-beta1",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/flysystem.git",
-                "reference": "2.0.0-alpha1"
+                "reference": "2.0.0-beta1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/flysystem-2.0.0-alpha1.zip",
-                "reference": "2.0.0-alpha1",
-                "shasum": "66784415e95c317cc5d642029b717598a75e7b95"
+                "url": "https://ftp.drupal.org/files/projects/flysystem-2.0.0-beta1.zip",
+                "reference": "2.0.0-beta1",
+                "shasum": "877bd3666cdc0c48c3bbdc885455d01fd9089897"
             },
             "require": {
                 "drupal/core": "^8.8 || ^9",
@@ -2129,11 +2129,11 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "2.0.0-alpha1",
-                    "datestamp": "1590912218",
+                    "version": "2.0.0-beta1",
+                    "datestamp": "1628606414",
                     "security-coverage": {
                         "status": "not-covered",
-                        "message": "Alpha releases are not covered by Drupal security advisories."
+                        "message": "Beta releases are not covered by Drupal security advisories."
                     }
                 }
             },
@@ -2162,6 +2162,10 @@
                 {
                     "name": "lhridley",
                     "homepage": "https://www.drupal.org/user/1223730"
+                },
+                {
+                    "name": "mglaman",
+                    "homepage": "https://www.drupal.org/user/2416470"
                 },
                 {
                     "name": "twistor",
@@ -12310,6 +12314,7 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "drupal/advancedqueue": 5,
+        "drupal/flysystem": 10,
         "drupal/flysystem_s3": 5,
         "drupal/gin": 15,
         "drupal/gin_login": 5

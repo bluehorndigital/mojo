@@ -23,7 +23,7 @@
         "drupal/core-composer-scaffold": "^9.2",
         "drupal/core-project-message": "^9.2",
         "drupal/core-recommended": "^9.2",
-        "drupal/flysystem": "^2",
+        "drupal/flysystem": "^2@beta",
         "drupal/flysystem_s3": "^2.0@RC",
         "drupal/gin": "^3.0@alpha",
         "drupal/gin_login": "^1.0@RC",
