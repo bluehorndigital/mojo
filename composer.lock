@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "eceea0de44c5b3034eed5de9e2b96a5c",
+    "content-hash": "039a1b3628ccf3e1e66953298ae74350",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -154,11 +154,11 @@
         },
         {
             "name": "bluehorndigital/mojo-drupal-scaffold",
-            "version": "dev-main",
+            "version": "dev-mojo-drupal-scaffold",
             "dist": {
                 "type": "path",
                 "url": "./packages/mojo-drupal-scaffold",
-                "reference": "14d4d0591239c2f60fad6e18dec01b6710180cfe"
+                "reference": "788dc37c0b926e4dbc86c6e0773fd4bf65f9bdfe"
             },
             "require": {
                 "composer-plugin-api": "^1.1 || ^2.0",
@@ -184,7 +184,8 @@
                             "mode": "replace",
                             "path": "assets/mojo.settings.php",
                             "overwrite": false
-                        }
+                        },
+                        "[web-root]/sites/development.services.yml": "assets/development.services.yml"
                     }
                 }
             },

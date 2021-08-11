@@ -62,9 +62,24 @@ final class DrupalScaffoldPlugin implements PluginInterface, EventSubscriberInte
       if (!in_array(self::PACKAGE_NAME, $extra['drupal-scaffold']['allowed-packages'], true)) {
         $extra['drupal-scaffold']['allowed-packages'][] = self::PACKAGE_NAME;
       }
+      if (empty($extra['drupal-scaffold']['file-mapping'])) {
+        $extra['drupal-scaffold']['file-mapping'] = [];
+      }
+
+      $fileMappingExclude = [
+        '[web-root]/.gitignore',
+        '[web-root]/example.gitignore',
+        '[web-root]/INSTALL.txt',
+        '[web-root]/README.md',
+      ];
+      foreach ($fileMappingExclude as $fileMapping) {
+        $extra['drupal-scaffold']['file-mapping'][$fileMapping] = false;
+      }
+
       $package->setExtra($extra);
       $configSource = $this->composer->getConfig()->getConfigSource();
       $configSource->addProperty('extra.drupal-scaffold.allowed-packages', $extra['drupal-scaffold']['allowed-packages']);
+      $configSource->addProperty('extra.drupal-scaffold.file-mapping', $extra['drupal-scaffold']['file-mapping']);
     }
   }
 

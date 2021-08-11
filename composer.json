@@ -110,7 +110,7 @@
                 "[web-root]/example.gitignore": false,
                 "[web-root]/INSTALL.txt": false,
                 "[web-root]/README.md": false,
-                "[web-root]/sites/development.services.yml": false
+                "[web-root]/.gitignore": false
             },
             "allowed-packages": ["bluehorndigital/mojo-drupal-scaffold"]
         },
