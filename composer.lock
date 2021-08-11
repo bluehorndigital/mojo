@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "375c9d205b42081f2a59e38f81b6f977",
+    "content-hash": "eceea0de44c5b3034eed5de9e2b96a5c",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -151,6 +151,51 @@
                 "source": "https://github.com/aws/aws-sdk-php/tree/3.188.1"
             },
             "time": "2021-08-09T18:29:02+00:00"
+        },
+        {
+            "name": "bluehorndigital/mojo-drupal-scaffold",
+            "version": "dev-main",
+            "dist": {
+                "type": "path",
+                "url": "./packages/mojo-drupal-scaffold",
+                "reference": "14d4d0591239c2f60fad6e18dec01b6710180cfe"
+            },
+            "require": {
+                "composer-plugin-api": "^1.1 || ^2.0",
+                "drupal/core-composer-scaffold": "*",
+                "php": "^7.4 || ^8.0"
+            },
+            "conflict": {
+                "amazeeio/drupal_integrations": "*"
+            },
+            "type": "composer-plugin",
+            "extra": {
+                "class": "BluehornDigital\\Mojo\\DrupalScaffoldPlugin",
+                "drupal-scaffold": {
+                    "file-mapping": {
+                        "[project-root]/.env.example": "assets/.env.example",
+                        "[project-root]/phpunit.xml.dist": {
+                            "mode": "replace",
+                            "path": "assets/phpunit.xml.dist",
+                            "overwrite": false
+                        },
+                        "[web-root]/sites/default/settings.redis.php": "assets/settings.redis.php",
+                        "[web-root]/sites/default/settings.php": {
+                            "mode": "replace",
+                            "path": "assets/mojo.settings.php",
+                            "overwrite": false
+                        }
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "BluehornDigital\\Mojo\\": "src"
+                }
+            },
+            "transport-options": {
+                "relative": true
+            }
         },
         {
             "name": "chi-teck/drupal-code-generator",

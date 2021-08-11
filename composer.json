@@ -11,11 +11,16 @@
         {
             "type": "composer",
             "url": "https://packages.drupal.org/8"
+        },
+        {
+            "type": "path",
+            "url": "./packages/mojo-drupal-scaffold"
         }
     ],
     "require": {
         "php": "^7.4|^8.0",
         "ext-json": "*",
+        "bluehorndigital/mojo-drupal-scaffold": "*",
         "composer/installers": "^1.9",
         "cweagans/composer-patches": "^1.7.1",
         "drupal/admin_toolbar": "^3.0",
@@ -107,7 +112,8 @@
                 "[web-root]/README.md": false,
                 "[web-root]/sites/development.services.yml": false,
                 "[web-root]/sites/default/settings.php": false
-            }
+            },
+            "allowed-packages": ["bluehorndigital/mojo-drupal-scaffold"]
         },
         "installer-paths": {
             "web/core": [
