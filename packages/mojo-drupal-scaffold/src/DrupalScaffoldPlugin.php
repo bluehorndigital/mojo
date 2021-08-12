@@ -80,6 +80,16 @@ final class DrupalScaffoldPlugin implements PluginInterface, EventSubscriberInte
       $configSource = $this->composer->getConfig()->getConfigSource();
       $configSource->addProperty('extra.drupal-scaffold.allowed-packages', $extra['drupal-scaffold']['allowed-packages']);
       $configSource->addProperty('extra.drupal-scaffold.file-mapping', $extra['drupal-scaffold']['file-mapping']);
+
+      $autoload = $package->getAutoload();
+      if (empty($autoload['files'])) {
+        $autoload['files'] = [];
+      }
+      if (!in_array('load.environment.php', $autoload['files'])) {
+        $autoload['files'][] = 'load.environment.php';
+      }
+      $package->setAutoload($autoload);
+      $configSource->addProperty('autoload', $autoload);
     }
   }
 

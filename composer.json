@@ -49,9 +49,7 @@
         "phpstan/phpstan-deprecation-rules": "^0.12.6"
     },
     "autoload": {
-        "files": [
-            "load.environment.php"
-        ]
+        "files": ["load.environment.php"]
     },
     "conflict": {
         "drupal/drupal": "*",

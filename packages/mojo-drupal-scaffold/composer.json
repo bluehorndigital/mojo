@@ -5,7 +5,8 @@
     "require": {
         "php": "^7.4 || ^8.0",
         "composer-plugin-api": "^1.1 || ^2.0",
-        "drupal/core-composer-scaffold": "*"
+        "drupal/core-composer-scaffold": "^9.0",
+        "vlucas/phpdotenv": "^5.3"
     },
     "conflict": {
         "amazeeio/drupal_integrations": "*"
@@ -20,6 +21,7 @@
         "drupal-scaffold": {
             "file-mapping": {
                 "[project-root]/.env.example": "assets/.env.example",
+                "[project-root]/load.environment.php": "assets/load.environment.php",
                 "[project-root]/phpunit.xml.dist": {
                     "mode": "replace",
                     "path": "assets/phpunit.xml.dist",
