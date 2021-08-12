@@ -144,8 +144,17 @@
         "drupal-core-project-message": {
             "post-create-project-cmd-message": [
                 "<bg=blue;fg=white>                                                         </>",
-                "<bg=blue;fg=white>  Welcome to Mojo!  </>",
-                "<bg=blue;fg=white>                                                         </>"
+                "<bg=blue;fg=white>  Welcome to Mojo!                                       </>",
+                "<bg=blue;fg=white>                                                         </>",
+                "",
+                "<bg=blue;fg=white>  Next steps:                                            </>",
+                "",
+                "  – Run `php mojo env:generate` to generate a `.env` file.",
+                "    Learn more about environment variables and Mojo <fg=blue>https://github.com/bluehorndigital/mojo/wiki/Environment-variables</>",
+                "  – Customize scaffolded project files",
+                "    Read the Drupal.org documentation <fg=blue>https://www.drupal.org/docs/develop/using-composer/using-drupals-composer-scaffold</>",
+                "",
+                ""
             ]
         }
     }

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "dd29b06d6bd83693a7b9f6233d00fbe2",
+    "content-hash": "d91afeba62f7ed10c3678d10e419b552",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -158,7 +158,7 @@
             "dist": {
                 "type": "path",
                 "url": "./packages/mojo-drupal-scaffold",
-                "reference": "4dab62bd74c3137d76c84defe042629900c7bfe8"
+                "reference": "aba35903509b9f030dab5568235c77d25097bbc5"
             },
             "require": {
                 "composer-plugin-api": "^1.1 || ^2.0",
@@ -176,17 +176,9 @@
                     "file-mapping": {
                         "[project-root]/.env.example": "assets/.env.example",
                         "[project-root]/load.environment.php": "assets/load.environment.php",
-                        "[project-root]/phpunit.xml.dist": {
-                            "mode": "replace",
-                            "path": "assets/phpunit.xml.dist",
-                            "overwrite": false
-                        },
+                        "[project-root]/phpunit.xml.dist": "assets/phpunit.xml.dist",
                         "[web-root]/sites/default/settings.redis.php": "assets/settings.redis.php",
-                        "[web-root]/sites/default/settings.php": {
-                            "mode": "replace",
-                            "path": "assets/mojo.settings.php",
-                            "overwrite": false
-                        },
+                        "[web-root]/sites/default/settings.php": "assets/mojo.settings.php",
                         "[web-root]/sites/development.services.yml": "assets/development.services.yml"
                     }
                 }
