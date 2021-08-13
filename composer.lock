@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d91afeba62f7ed10c3678d10e419b552",
+    "content-hash": "4dcaf239088d9ae7ccf03da94d2acac5",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -154,11 +154,17 @@
         },
         {
             "name": "bluehorndigital/mojo-drupal-scaffold",
-            "version": "dev-mojo-drupal-scaffold",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/bluehorndigital/mojo-drupal-scaffold.git",
+                "reference": "269198c46f93a24f86ddb2231ffaf4cb8c53e709"
+            },
             "dist": {
-                "type": "path",
-                "url": "./packages/mojo-drupal-scaffold",
-                "reference": "0ac19151fddc07d4f4652ab97a4b1dc1f1324698"
+                "type": "zip",
+                "url": "https://api.github.com/repos/bluehorndigital/mojo-drupal-scaffold/zipball/269198c46f93a24f86ddb2231ffaf4cb8c53e709",
+                "reference": "269198c46f93a24f86ddb2231ffaf4cb8c53e709",
+                "shasum": ""
             },
             "require": {
                 "composer-plugin-api": "^1.1 || ^2.0",
@@ -194,9 +200,15 @@
                     "BluehornDigital\\Mojo\\": "src"
                 }
             },
-            "transport-options": {
-                "relative": true
-            }
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "support": {
+                "issues": "https://github.com/bluehorndigital/mojo-drupal-scaffold/issues",
+                "source": "https://github.com/bluehorndigital/mojo-drupal-scaffold/tree/1.0.1"
+            },
+            "time": "2021-08-13T21:09:52+00:00"
         },
         {
             "name": "chi-teck/drupal-code-generator",

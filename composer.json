@@ -11,16 +11,12 @@
         {
             "type": "composer",
             "url": "https://packages.drupal.org/8"
-        },
-        {
-            "type": "path",
-            "url": "./packages/mojo-drupal-scaffold"
         }
     ],
     "require": {
         "php": "^7.4|^8.0",
         "ext-json": "*",
-        "bluehorndigital/mojo-drupal-scaffold": "*",
+        "bluehorndigital/mojo-drupal-scaffold": "^1.0.0",
         "composer/installers": "^1.9",
         "cweagans/composer-patches": "^1.7.1",
         "drupal/admin_toolbar": "^3.0",
