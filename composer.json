@@ -11,11 +11,16 @@
         {
             "type": "composer",
             "url": "https://packages.drupal.org/8"
+        },
+        {
+            "type": "path",
+            "url": "./packages/mojo-drupal-scaffold"
         }
     ],
     "require": {
         "php": "^7.4|^8.0",
         "ext-json": "*",
+        "bluehorndigital/mojo-drupal-scaffold": "*",
         "composer/installers": "^1.9",
         "cweagans/composer-patches": "^1.7.1",
         "drupal/admin_toolbar": "^3.0",
@@ -44,9 +49,7 @@
         "phpstan/phpstan-deprecation-rules": "^0.12.6"
     },
     "autoload": {
-        "files": [
-            "load.environment.php"
-        ]
+        "files": ["load.environment.php"]
     },
     "conflict": {
         "drupal/drupal": "*",
@@ -105,9 +108,9 @@
                 "[web-root]/example.gitignore": false,
                 "[web-root]/INSTALL.txt": false,
                 "[web-root]/README.md": false,
-                "[web-root]/sites/development.services.yml": false,
-                "[web-root]/sites/default/settings.php": false
-            }
+                "[web-root]/.gitignore": false
+            },
+            "allowed-packages": ["bluehorndigital/mojo-drupal-scaffold"]
         },
         "installer-paths": {
             "web/core": [
@@ -141,8 +144,17 @@
         "drupal-core-project-message": {
             "post-create-project-cmd-message": [
                 "<bg=blue;fg=white>                                                         </>",
-                "<bg=blue;fg=white>  Welcome to Mojo!  </>",
-                "<bg=blue;fg=white>                                                         </>"
+                "<bg=blue;fg=white>  Welcome to Mojo!                                       </>",
+                "<bg=blue;fg=white>                                                         </>",
+                "",
+                "<bg=blue;fg=white>  Next steps:                                            </>",
+                "",
+                "  – Run `php mojo env:generate` to generate a `.env` file.",
+                "    Learn more about environment variables and Mojo <fg=blue>https://github.com/bluehorndigital/mojo/wiki/Environment-variables</>",
+                "  – Customize scaffolded project files",
+                "    Read the Drupal.org documentation <fg=blue>https://www.drupal.org/docs/develop/using-composer/using-drupals-composer-scaffold</>",
+                "",
+                ""
             ]
         }
     }
