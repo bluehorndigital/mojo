@@ -158,7 +158,7 @@
             "dist": {
                 "type": "path",
                 "url": "./packages/mojo-drupal-scaffold",
-                "reference": "bf84469f5b2aa69b3288c5216d1dd0cc4c785ff2"
+                "reference": "0ac19151fddc07d4f4652ab97a4b1dc1f1324698"
             },
             "require": {
                 "composer-plugin-api": "^1.1 || ^2.0",
@@ -168,6 +168,11 @@
             },
             "conflict": {
                 "amazeeio/drupal_integrations": "*"
+            },
+            "suggest": {
+                "drupal/flysystem_s3": "Asset storage through the Flysystem library and S3 compatible object storage.",
+                "drupal/redis": "Redis key-value store for caching.",
+                "drupal/swiftmailer": "HTML friendly emails through Swiftmailer"
             },
             "type": "composer-plugin",
             "extra": {

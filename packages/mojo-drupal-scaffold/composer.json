@@ -16,6 +16,11 @@
             "BluehornDigital\\Mojo\\": "src"
         }
     },
+    "suggest": {
+        "drupal/redis": "Redis key-value store for caching.",
+        "drupal/flysystem_s3": "Asset storage through the Flysystem library and S3 compatible object storage.",
+        "drupal/swiftmailer": "HTML friendly emails through Swiftmailer"
+    },
     "extra": {
         "class": "BluehornDigital\\Mojo\\DrupalScaffoldPlugin",
         "drupal-scaffold": {
