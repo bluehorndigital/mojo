@@ -13,8 +13,8 @@
             "url": "https://packages.drupal.org/8"
         },
         {
-            "type": "path",
-            "url": "./packages/mojo-drupal-scaffold"
+            "type": "vcs",
+            "url": "https://github.com/bluehorndigital/mojo-drupal-scaffold.git"
         }
     ],
     "require": {
