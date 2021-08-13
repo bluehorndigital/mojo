@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "85abdafc2fc3069833a508e2294a4be8",
+    "content-hash": "4dcaf239088d9ae7ccf03da94d2acac5",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -154,16 +154,16 @@
         },
         {
             "name": "bluehorndigital/mojo-drupal-scaffold",
-            "version": "dev-main",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bluehorndigital/mojo-drupal-scaffold.git",
-                "reference": "fc13edcaab50a879708790b08b2060c5f56fabe5"
+                "reference": "269198c46f93a24f86ddb2231ffaf4cb8c53e709"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bluehorndigital/mojo-drupal-scaffold/zipball/fc13edcaab50a879708790b08b2060c5f56fabe5",
-                "reference": "fc13edcaab50a879708790b08b2060c5f56fabe5",
+                "url": "https://api.github.com/repos/bluehorndigital/mojo-drupal-scaffold/zipball/269198c46f93a24f86ddb2231ffaf4cb8c53e709",
+                "reference": "269198c46f93a24f86ddb2231ffaf4cb8c53e709",
                 "shasum": ""
             },
             "require": {
@@ -180,7 +180,6 @@
                 "drupal/redis": "Redis key-value store for caching.",
                 "drupal/swiftmailer": "HTML friendly emails through Swiftmailer"
             },
-            "default-branch": true,
             "type": "composer-plugin",
             "extra": {
                 "class": "BluehornDigital\\Mojo\\DrupalScaffoldPlugin",
@@ -201,11 +200,15 @@
                     "BluehornDigital\\Mojo\\": "src"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
             "support": {
-                "source": "https://github.com/bluehorndigital/mojo-drupal-scaffold/tree/main",
-                "issues": "https://github.com/bluehorndigital/mojo-drupal-scaffold/issues"
+                "issues": "https://github.com/bluehorndigital/mojo-drupal-scaffold/issues",
+                "source": "https://github.com/bluehorndigital/mojo-drupal-scaffold/tree/1.0.1"
             },
-            "time": "2021-08-13T20:53:01+00:00"
+            "time": "2021-08-13T21:09:52+00:00"
         },
         {
             "name": "chi-teck/drupal-code-generator",
