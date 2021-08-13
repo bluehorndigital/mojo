@@ -158,7 +158,7 @@
             "dist": {
                 "type": "path",
                 "url": "./packages/mojo-drupal-scaffold",
-                "reference": "aba35903509b9f030dab5568235c77d25097bbc5"
+                "reference": "bf84469f5b2aa69b3288c5216d1dd0cc4c785ff2"
             },
             "require": {
                 "composer-plugin-api": "^1.1 || ^2.0",
@@ -178,6 +178,7 @@
                         "[project-root]/load.environment.php": "assets/load.environment.php",
                         "[project-root]/phpunit.xml.dist": "assets/phpunit.xml.dist",
                         "[web-root]/sites/default/settings.redis.php": "assets/settings.redis.php",
+                        "[web-root]/sites/default/settings.filesystems.php": "assets/settings.filesystems.php",
                         "[web-root]/sites/default/settings.php": "assets/mojo.settings.php",
                         "[web-root]/sites/development.services.yml": "assets/development.services.yml"
                     }
