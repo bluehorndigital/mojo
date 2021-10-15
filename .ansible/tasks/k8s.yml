@@ -1,0 +1,167 @@
+---
+- name: Set k8s facts
+  set_fact:
+    k8s_namespace: 'mojo-{{ site_name }}'
+- name: create namespace
+  k8s:
+    state: present
+    definition:
+      apiVersion: v1
+      kind: Namespace
+      metadata:
+        name: '{{ k8s_namespace }}'
+- name: create secrets
+  k8s:
+    state: present
+    definition:
+      apiVersion: v1
+      kind: Secret
+      metadata:
+        name: app-secrets
+        namespace: '{{ k8s_namespace }}'
+      data:
+        mysql-pass: '{{ database_password | b64encode}}'
+        aws-secret-key: '{{ object_storage_secret_key | b64encode}}'
+- name: create ingress
+  k8s:
+    state: present
+    definition:
+      apiVersion: networking.k8s.io/v1
+      kind: Ingress
+      metadata:
+        name: 'app-ingress'
+        namespace: '{{ k8s_namespace }}'
+        annotations:
+          kubernetes.io/tls-acme: "true"
+          cert-manager.io/cluster-issuer: letsencrypt-prod
+      spec:
+        ingressClassName: nginx
+        tls:
+        - hosts:
+          - '{{ hostname }}'
+          secretName: letsencrypt-prod
+        rules:
+        - host: '{{ hostname }}'
+          http:
+            paths:
+            - path: "/"
+              pathType: ImplementationSpecific
+              backend:
+                service:
+                  name: 'app-service'
+                  port:
+                    number: 80
+- name: create service
+  k8s:
+    state: present
+    definition:
+      apiVersion: v1
+      kind: Service
+      metadata:
+        name: 'app-service'
+        namespace: '{{ k8s_namespace }}'
+        labels:
+          app: '{{ site_name }}'
+      spec:
+        selector:
+          app: '{{ site_name }}'
+        ports:
+          - protocol: TCP
+            port: 80
+- name: create deployment
+  k8s:
+    definition:
+      apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+        name: app-deployment
+        namespace: '{{ k8s_namespace }}'
+      spec:
+        replicas: 1
+        selector:
+          matchLabels:
+            app: '{{ site_name }}'
+        template:
+          metadata:
+            labels:
+              app: '{{ site_name }}'
+          spec:
+            imagePullSecrets:
+            - name: mojo-registry
+            containers:
+            - name: app
+              image: '{{ image_name }}'
+              imagePullPolicy: IfNotPresent
+              ports:
+                - containerPort: 80
+              env:
+                - name: DB_CONNECTION
+                  value: 'mysql'
+                - name: DRUPAL_DATABASE_HOST
+                  value: '{{ database_host }}'
+                - name: DRUPAL_DATABASE_PORT
+                  value: '{{ database_port }}'
+                - name: DRUPAL_DATABASE_NAME
+                  value: '{{ database_name }}'
+                - name: DRUPAL_DATABASE_PASSWORD
+                  valueFrom:
+                    secretKeyRef:
+                      name: app-secrets
+                      key: mysql-pass
+                - name: DRUPAL_DATABASE_USERNAME
+                  value: '{{ database_user }}'
+                - name: DRUPAL_HASH_SALT
+                  value: '{{ hash_salt }}'
+                - name: REDIS_HOST
+                  value: 'localhost'
+                - name: REDIS_PORT
+                  value: '6379'
+                - name: FILESYSTEM_DRIVER
+                  value: 's3'
+                - name: AWS_ACCESS_KEY_ID
+                  value: '{{ object_storage_access_key }}'
+                - name: AWS_SECRET_ACCESS_KEY
+                  valueFrom:
+                    secretKeyRef:
+                      name: app-secrets
+                      key: aws-secret-key
+                - name: AWS_DEFAULT_REGION
+                  value: 'NYC3'
+                - name: S3_BUCKET
+                  value: '{{ site_name }}'
+                - name: S3_PROTOCOL
+                  value: 'https'
+                - name: S3_CNAME
+                  value: 'https://mojocart-cdn.nyc3.digitaloceanspaces.com'
+                - name: S3_ENDPOINT
+                  value: 'https://nyc3.digitaloceanspaces.com'
+                - name: S3_USE_PATH_STYLE_ENDPOINT
+                  value: 'false'
+                - name: S3_CNAME_IS_BUCKET
+                  value: 'false'
+                - name: SMTP_SERVER
+                  value: ''
+                - name: SMTP_PORT
+                  value: ''
+                - name: SMTP_USERNAME
+                  value: ''
+                - name: SMTP_PASSWORD
+                  value: ''
+              resources:
+                limits:
+                  memory: 512Mi
+                  cpu: "1"
+                requests:
+                  memory: 256Mi
+                  cpu: "0.2"
+            - name: rediscache
+              image: redis:5.0
+              ports:
+                - containerPort: 6379
+              resources:
+                limits:
+                  memory: 512Mi
+                  cpu: "1"
+                requests:
+                  memory: 256Mi
+                  cpu: "0.2"

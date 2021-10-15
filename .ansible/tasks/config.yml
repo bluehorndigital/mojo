@@ -1,0 +1,13 @@
+---
+- name: Include base variables
+  include_vars: base.yml
+- name: Get current VCS hash.
+  shell: |
+    git describe --tags --always
+  register: vcs_hash
+- name: Set image tag
+  set_fact:
+    image_tag: '{{ vcs_hash.stdout }}'
+- name: Debug image name
+  debug:
+    msg: "{{ image_registry }}/{{ image_name }}:{{ image_tag }}"

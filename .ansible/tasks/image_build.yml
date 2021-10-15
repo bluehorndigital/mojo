@@ -1,0 +1,11 @@
+---
+- name: Build image
+  docker_image:
+    build:
+      path: '../'
+      pull: false
+      args:
+        BUILD_VERSION: '{{ image_tag }}'
+    name: '{{ image_name }}'
+    tag: '{{ image_tag }}'
+    source: build

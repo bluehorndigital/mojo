@@ -1,0 +1,11 @@
+---
+- hosts: localhost
+  gather_facts: false
+
+  tasks:
+    - include_tasks: tasks/config.yml
+
+    - name: base variables
+      include_vars: 'vars/base.yml'
+
+    - include_tasks: tasks/image_build.yml
