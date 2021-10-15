@@ -1,0 +1,16 @@
+name: Ansible
+on:
+  pull_request:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: build
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install test dependencies.
+        run: pip3 install ansible openshift
+
+      - name: run playbook
+        run: ansible-playbook -i inventory pr.yml
+        working-directory: .ansible
