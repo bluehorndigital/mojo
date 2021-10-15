@@ -3,8 +3,7 @@ on:
   push:
     branches: [main]
   pull_request:
-  schedule:
-    - cron: 0 0 * * *
+    branches: [main]
 jobs:
   install:
     runs-on: ${{ matrix.os }}
