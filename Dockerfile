@@ -1,7 +1,7 @@
 # Composer build step.
 # The official Composer image is not used since it has PHP 8 Alpine, and no platform requirements.
 # https://github.com/docker-library/docs/tree/master/composer#php-version--extensions
-FROM php:7.4-cli-alpine as vendor
+FROM php:8.0-cli-alpine as vendor
 
 WORKDIR /app
 
@@ -26,7 +26,7 @@ RUN set -eux; \
 
 # Taken from https://github.com/docker-library/drupal/blob/master/9.2/php7.4/apache-buster/Dockerfile
 # Adds bcmath extension, deployment identifier, and Redis.
-FROM php:7.4-apache-buster as build
+FROM php:8.0-apache-buster as build
 ARG BUILD_VERSION
 
 # install the PHP extensions we need

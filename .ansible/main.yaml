@@ -1,0 +1,15 @@
+---
+- hosts: localhost
+  gather_facts: false
+
+  tasks:
+    - include_tasks: tasks/config.yml
+
+    - name: base variables
+      include_vars: 'vars/site.yml'
+    - name: site variables
+      include_vars: 'vars/site.yml'
+
+    - include_tasks: tasks/image.yml
+    # @todo get this rollin' and deployin'.
+    #- include_tasks: tasks/k8s.yml

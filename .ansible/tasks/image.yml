@@ -1,0 +1,25 @@
+---
+- name: Build image if it's not already built.
+  docker_image:
+    build:
+      path: '../'
+      pull: false
+      args:
+        BUILD_VERSION: '{{ image_tag }}'
+    name: '{{ image_name }}'
+    tag: '{{ image_tag }}'
+    source: build
+
+- name: Log into Docker registry.
+  docker_login:
+    registry: '{{ image_registry }}'
+    username: '{{ registry_username }}'
+    password: '{{ registry_password }}'
+
+- name: Push image to Docker registry.
+  docker_image:
+    name: '{{ image_name }}'
+    tag: '{{ vcs_hash.stdout }}'
+    repository: '{{ image_registry }}/{{ image_name }}'
+    push: true
+    source: local
