@@ -9,7 +9,7 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Install test dependencies.
-        run: pip3 install ansible openshift
+        run: pip3 install ansible docker openshift
 
       - name: run playbook
         run: ansible-playbook -i inventory pr.yml
